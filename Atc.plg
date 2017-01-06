@@ -1,0 +1,48 @@
+--------------------Configuration: Atc - Java Virtual Machine Debug--------------------
+Begining build with project "E:\My Documents\Adam\Work\Atc new boxs\Atc.dsp", at root.
+Active configuration is Java Virtual Machine Java Project (based on Java Virtual Machine Java Project)
+
+Project's tools are:
+			"Java Compiler" with flags "/g "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP6040.TMP" with contents <E:\My Documents\Adam\Work\Atc new boxs\IDD_CONTROLS_MAIN.java
+E:\My Documents\Adam\Work\Atc new boxs\ZoomFrame.java
+E:\My Documents\Adam\Work\Atc new boxs\ZoomBox.java
+E:\My Documents\Adam\Work\Atc new boxs\Sky.java
+E:\My Documents\Adam\Work\Atc new boxs\Radar.java
+E:\My Documents\Adam\Work\Atc new boxs\Popup1.java
+E:\My Documents\Adam\Work\Atc new boxs\PlaneDirection.java
+E:\My Documents\Adam\Work\Atc new boxs\PlaneCord.java
+E:\My Documents\Adam\Work\Atc new boxs\Plane.java
+E:\My Documents\Adam\Work\Atc new boxs\MapPoints.java
+E:\My Documents\Adam\Work\Atc new boxs\MapCords.java
+E:\My Documents\Adam\Work\Atc new boxs\Map.java
+E:\My Documents\Adam\Work\Atc new boxs\MainMenu.java
+E:\My Documents\Adam\Work\Atc new boxs\LoadPlaneData.java
+E:\My Documents\Adam\Work\Atc new boxs\History.java
+E:\My Documents\Adam\Work\Atc new boxs\FpsFrame.java
+E:\My Documents\Adam\Work\Atc new boxs\FloatPoint.java
+E:\My Documents\Adam\Work\Atc new boxs\ExitProgram.java
+E:\My Documents\Adam\Work\Atc new boxs\Exit.java
+E:\My Documents\Adam\Work\Atc new boxs\DialogLayout.java
+E:\My Documents\Adam\Work\Atc new boxs\ControlsFrame.java
+E:\My Documents\Adam\Work\Atc new boxs\CommandDialog.java
+E:\My Documents\Adam\Work\Atc new boxs\ClockFrame.java
+E:\My Documents\Adam\Work\Atc new boxs\Clock.java
+E:\My Documents\Adam\Work\Atc new boxs\BasicFrame.java
+E:\My Documents\Adam\Work\Atc new boxs\BasicDialog.java
+E:\My Documents\Adam\Work\Atc new boxs\AtcOptions.java
+E:\My Documents\Adam\Work\Atc new boxs\AtcMain.java
+E:\My Documents\Adam\Work\Atc new boxs\Atc.java
+E:\My Documents\Adam\Work\Atc new boxs\AircraftSituationData.java
+E:\My Documents\Adam\Work\Atc new boxs\AircraftData.java>
+Compiling...
+Microsoft (R) Visual J++ Compiler Version 1.01.7022
+Copyright (C) Microsoft Corp 1996. All rights reserved.
+
+
+
+
+Atc - 0 error(s), 0 warning(s)

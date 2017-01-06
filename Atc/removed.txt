@@ -1,0 +1,265 @@
+/*		String s ;
+
+		for (int i = 0; i < args.length; i++)
+		{
+			if (args[i] == "d") {
+				debug = true;
+				System.out.println("***  DEBUG MODE  ***");
+			} else {
+				debug = false; 
+				System.out.println("Starting...");
+			}
+	
+		}	
+*/
+/*
+		try 
+		{
+			FileInputStream in = new FileInputStream(args[0]);
+			BufferedInputStream bin = new BufferedInputStream(in);
+
+			FileOutputStream out = new  FileOutputStream(args[1]);
+			BufferedOutputStream bout = new BufferedOutputStream(out);
+			PrintStream pout = new PrintStream(bout);
+			
+			byte bArray[] = new byte[8];
+			int nBytesRead;
+			while(bin.available() > 0)
+			{
+				nBytesRead = bin.read(bArray);
+				for(int i =0;i<nBytesRead; i++)
+				{
+					int nByte = (int)bArray[i];
+					String s = Integer.toString(nByte, 16);
+					if (s.length() == 1)
+					{
+						pout.print(" ");
+					}
+					pout.print(s + ", ");
+				}
+
+				pout.print("-");
+				for (int i=0; i<nBytesRead; i++)
+				{
+					char c = (char)bArray[i];
+					if (Character.isDigit(c) ||
+						Character.isLowerCase(c) ||
+						Character.isUpperCase(c))
+					{
+					}
+					else
+					{
+						c = 'c' ;
+					}
+					pout.print(c);
+				}
+				pout.println(" ");
+			}
+		}
+		catch(IOException ioe)
+		{
+			System.out.println(ioe.toString());
+		}
+	
+*/
+
+// sky constructor, now loads files
+//		String plane_calls[] = {"SVA 015","EIN 826","SAB 681","GAWAB","GMOBL","BAW 221","AAA 761","TWA 974","BAW 714","BAW 279"} ;
+
+		// loop around to create 'num_planes' num of planes
+//		for (int j=0; j<num_planes; j++){
+//			m_plane[j] = new Plane(plane_calls[j]);
+//		}
+
+planedata
+		// vars used in creating the random planes
+/*		double dRanX, dRanY, dRanA, dRanS, dRanFl ;
+		
+		dRanX = Math.random() * 1050;
+		dRanY = Math.random() * 700;
+		dRanA = Math.random() * 360;
+		dRanS = (Math.random() * 300)+2;  // +1 to stop 0 being picked
+		dRanFl = Math.random() * 150 ;
+
+		x = (int)dRanX;
+		y = (int)dRanY;
+		told_to_heading = current_heading = (int)dRanA;
+		current_speed = (int)dRanS;
+		told_to_fl = current_fl = (int)dRanFl;
+*/
+
+
+// plane.java
+
+		// Andys code to change Flight level
+	// ---------------------------------------------------------------------------------------
+	private void check_fl()
+	{
+		//-climbing
+		if(plane_dir.current_fl < plane_dir.told_to_fl)
+		{
+			if (plane_dir.current_fl < 100)	//aircraft below FL 100
+			{
+				number = 0; //number within array
+			}
+			if ((plane_dir.current_fl >= 100) & (plane_dir.current_fl < 200) )	//aircraft (FL 100 - FL 200)
+			{
+				number = 1;
+			}				
+			if ((plane_dir.current_fl >= 200) & (plane_dir.current_fl < 300) )	//aircraft (FL 200 - FL 300)
+			{
+				number = 2;
+			}
+			if (plane_dir.current_fl >= 300)	//aircraft above FL 300
+			{
+				number = 3;
+			}		
+			
+			climb();
+		}
+	
+		
+		//-decending
+		if(plane_dir.current_fl > plane_dir.told_to_fl)
+		{
+			if (plane_dir.current_fl < 100){
+				number = 0;
+			}				
+			if ((plane_dir.current_fl >= 100) & (plane_dir.current_fl < 200) )	{
+				number = 1;
+			}				
+			if ((plane_dir.current_fl >= 200) & (plane_dir.current_fl < 300) )	{
+				number = 2;
+			}
+			if (plane_dir.current_fl >= 300)	{
+				number = 3;
+			}		
+			descent();
+		}
+		
+	}
+	
+		
+	private void climb()
+	{
+		if (pd.current_step + pd.climb_rate_change >= pd.climb_rate[pd.number]) 
+		{
+			pd.current_step = pd.climb_rate[pd.number] / 1000;	//returns flight level
+			pd.current_speed = pd.climb_speed;
+			pd.starting_climb = false;
+		}
+		else
+		{	
+			pd.current_step = pd.current_step + pd.climb_rate_change;
+			pd.current_speed = pd.current_speed - pd.climb_speed_change;
+		}
+
+		pd.current_fl = pd.current_fl + pd.current_step;
+
+		if (pd.current_fl + (pd.climb * pd.lag) >= pd.told_to_fl)
+		{
+			pd.finishing_climb = true;
+		}
+	}
+
+/*	private void finish_climb()
+	{
+		if (plane_dir.current_step - pd.climb_rate_change <= 0)
+		{
+			pd.current_step = 0;
+			pd.current_speed = pd.cruise_speed;
+			pd.finishing_climb = false;
+			pd.starting_climb = true;
+			pd.current_fl = pd.told_to_fl;
+		}
+		else
+		{
+			pd.current_step = pd.current_step - pd.climb_rate_change;
+			pd.current_speed = pd.current_speed + pd.climb_speed_change;
+			pd.current_fl = pd.current_fl + pd.current_step;
+		}
+	}
+*/		
+	private void descent()
+	{
+		if (pd.current_step - pd.climb_rate_change >= pd.descent_rate[pd.number]) 
+		{
+			pd.current_step = pd.descent_rate[pd.number] / 1000;	//returns flight level
+			pd.current_speed = pd.descent_speed;
+			pd.starting_descent = false;
+		}		
+		else
+		{	
+			pd.current_step = pd.current_step - pd.descent_rate_change;
+			pd.current_speed = pd.current_speed - pd.descent_speed_change;
+		}
+		
+		pd.current_fl = pd.current_fl - pd.current_step;
+		if (pd.current_fl - (pd.descent_rate[pd.number] * pd.lag) >= pd.told_to_fl)
+		{
+			pd.finishing_descent = true;
+		}
+	}
+		
+/*	private void finish_descent()
+	{
+		if (pd.current_step - pd.descent_rate_change <= 0)
+		{
+			pd.current_step = 0;
+			pd.current_speed = pd.cruise_speed;
+			pd.finishing_descent = false;
+			pd.starting_descent = true;
+			pd.current_fl = pd.told_to_fl;
+		}
+		else
+		{
+			pd.current_step = pd.current_step + pd.descent_rate_change;
+			pd.current_speed = pd.current_speed + pd.climb_speed_change;
+			pd.current_fl = pd.current_fl - pd.current_step;
+		}
+	}
+*/
+
+
+	//*****************************************************************************************
+//fps
+
+				// organge font color code - large (20)
+		// -----------------------------------
+		f = new Font("Helvetica",Font.PLAIN,20);
+		g.setFont(f);
+	
+		// plane name
+//		g.drawString(m_radar.m_plane[0].pd.plane_name,250,70+y);	// 6
+		
+		// pink font color code - med (15)
+		// -----------------------------------
+		f = new Font("Helvetica",Font.PLAIN,15);
+		g.setFont(f);
+
+		// plane speed
+//		speed = m_radar.m_plane[0].pd.speed;
+//		out = Integer.toString(speed);
+//		g.drawString('T'+out,		345,100+y);			// 9
+
+		// other text
+		g.drawString("2W",			15, 100+y);			// 2
+		g.drawString("H/EA33/C",	230,100+y);		  	// 7
+		g.drawString("EGGP",		388,100+y);			// 10
+		g.drawString("A45",			440,100+y);			// 11
+		g.drawString("EGHH",		480,100+y);			// 12
+
+
+		// green font color code - small (12)
+		// -----------------------------------
+		f = new Font("Helvetica",Font.PLAIN,12);
+		g.setFont(f);
+
+		g.drawString("1711",		20,  50+y);			// 1
+		g.drawString("TYN",			65,  50+y);			// 3
+		g.drawString("310",			115, 70+y);			// 4
+		g.drawString("LTU",			235, 50+y);			// 5
+		g.drawString("0621",		290, 85+y);			// 8
+		g.drawString("24",			550, 43+y);			// 13
+		g.drawString("DAR",			550, 55+y);			// 14
+		g.drawString("1638",		600, 55+y);			// 15

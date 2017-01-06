@@ -1,0 +1,18 @@
+--------------------Configuration: Atc - Java Virtual Machine Debug--------------------
+Begining build with project "D:\DevStudio\MyProjects\Atc\Atc.dsp", at root.
+Active configuration is Java Virtual Machine Java Project (based on Java Virtual Machine Java Project)
+
+Project's tools are:
+			"Java Compiler" with flags "/g "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP92A2.TMP" with contents <D:\DevStudio\MyProjects\Atc\Plane.java>
+Compiling...
+Microsoft (R) Visual J++ Compiler Version 1.01.7022
+Copyright (C) Microsoft Corp 1996. All rights reserved.
+
+
+
+
+Atc - 0 error(s), 0 warning(s)
